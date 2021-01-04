@@ -1,21 +1,44 @@
 package com.Parsers.JSONParser;
 
-public enum JSONCharacter {
-    JSON_COMMA(","),
-    JSON_COLON(":"),
-    JSON_BRACKET_LEFT("["),
-    JSON_BRACKET_RIGHT("]"),
-    JSON_BRACE_LEFT("{"),
-    JSON_BRACE_RIGHT("}"),
-    JSON_QUOTE("\"");
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Optional;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
-    private final String field;
+public enum JSONCharacter implements JSONComponent{
+    JSON_COMMA(','),
+    JSON_COLON(':'),
+    JSON_BRACKET_LEFT('['),
+    JSON_BRACKET_RIGHT(']'),
+    JSON_BRACE_LEFT('{'),
+    JSON_BRACE_RIGHT('}'),
+    JSON_QUOTE('"');
 
-    private JSONCharacter(String field) {
+    private static final Map<Character, JSONCharacter> charToJSONMap;
+
+    static {
+        charToJSONMap = Arrays.stream(JSONCharacter.values())
+                .collect(Collectors.toMap(JSONCharacter::getField, Function.identity()));
+    }
+
+    private final char field;
+
+    JSONCharacter(char field) {
         this.field = field;
     }
 
-    public String getField() {
+    public char getField() {
         return this.field;
+    }
+
+    public static Optional<JSONCharacter> charLookup(char c) {
+        return charToJSONMap.containsKey(c) ? Optional.of(charToJSONMap.get(c)) : Optional.empty();
+    }
+
+
+    @Override
+    public String JSONRepresentation() {
+        return Character.toString(this.field);
     }
 }
