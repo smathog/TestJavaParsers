@@ -1,4 +1,4 @@
-package com.Parsers.JSONParser;
+package com.Parsers.JSONComponents;
 
 import java.util.Arrays;
 import java.util.Map;

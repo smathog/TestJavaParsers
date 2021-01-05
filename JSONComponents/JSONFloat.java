@@ -1,4 +1,4 @@
-package com.Parsers.JSONParser;
+package com.Parsers.JSONComponents;
 
 public class JSONFloat extends JSONNumber {
     private final double num;

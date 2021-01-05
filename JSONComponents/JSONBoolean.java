@@ -1,4 +1,4 @@
-package com.Parsers.JSONParser;
+package com.Parsers.JSONComponents;
 
 public class JSONBoolean implements JSONComponent {
     private final boolean bool;

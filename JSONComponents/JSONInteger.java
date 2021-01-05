@@ -1,4 +1,4 @@
-package com.Parsers.JSONParser;
+package com.Parsers.JSONComponents;
 
 public class JSONInteger extends JSONNumber {
     private final int num;
