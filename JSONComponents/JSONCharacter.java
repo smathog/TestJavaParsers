@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.HashMap;
 
 public enum JSONCharacter implements JSONComponent{
     JSON_COMMA(','),
@@ -19,7 +20,7 @@ public enum JSONCharacter implements JSONComponent{
 
     static {
         charToJSONMap = Arrays.stream(JSONCharacter.values())
-                .collect(Collectors.toMap(JSONCharacter::getField, Function.identity()));
+                .collect(Collectors.toMap(JSONCharacter::getField, Function.identity(), (e, r) -> e, HashMap::new));
     }
 
     private final char field;
