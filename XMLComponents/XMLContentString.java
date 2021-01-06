@@ -14,4 +14,9 @@ public class XMLContentString extends XMLContent {
     public void setContentString(String contentString) {
         this.contentString = contentString;
     }
+
+    @Override
+    public String toString() {
+        return contentString;
+    }
 }
